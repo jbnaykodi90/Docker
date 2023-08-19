@@ -1,4 +1,4 @@
-package com.jay;
+package com.jay.NamingServer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
