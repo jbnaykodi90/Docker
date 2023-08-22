@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  merchant-service:
+    image: jbnaykodi90/ims-app/merchant-service:0.0.1-SNAPSHOT
+    ports:
+      - "8130:8130"
+    networks:
+      - ims-network
+    depends_on:
+      - naming-server
+    environment:
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://naming-server:8761/eureka
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
+
+  naming-server:
+    image: jbnaykodi90/ims-app/naming-server:0.0.2-SNAPSHOT
+    ports:
+      - "8761:8761"
+    networks:
+      - ims-network
+
+  zipkin-server:
+    image: openzipkin/zipkin:2.23
+    ports:
+      - "9411:9411"
+    networks:
+      - ims-network
+    restart: always #Restart if there is a problem starting up
+
+networks:
+  ims-network:
