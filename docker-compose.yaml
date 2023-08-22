@@ -4,7 +4,7 @@ services:
   merchant-service:
     image: jbnaykodi90/ims-app/merchant-service:0.0.1-SNAPSHOT
     ports:
-      - "8130:8130"
+      - "8100:8100"
     networks:
       - ims-network
     depends_on:
